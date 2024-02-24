@@ -295,6 +295,7 @@ int main(int argc, char *argv[])
     std::string env_port = getEnv("PORT");
     if(!env_port.empty())
         global.listenPort = to_int(env_port, global.listenPort);
+    global.listenAddress = "::";
     listener_args args = {global.listenAddress, global.listenPort, global.maxPendingConns, global.maxConcurThreads, cron_tick_caller, 200};
     //std::cout<<"Serving HTTP @ http://"<<listen_address<<":"<<listen_port<<std::endl;
     writeLog(0, "Startup completed. Serving HTTP @ http://" + global.listenAddress + ":" + std::to_string(global.listenPort), LOG_LEVEL_INFO);
